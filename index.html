@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lua Deobfuscator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main>
+        <h1>Lua Deobfuscator</h1>
+        <p class="intro">
+            Client-sided, open-source & completely free
+        </p>
+
+        <div class="options" id="options">
+            <label>
+                <input type="checkbox" id="beautify" checked>
+                Beautify &amp; reindent
+                <select id="indent" aria-label="Indent">
+                    <option value="2">2 spaces</option>
+                    <option value="4">4 spaces</option>
+                    <option value="tab" selected>Tabs</option>
+                </select>
+            </label>
+            <label>
+                <input type="checkbox" id="rename-vars" checked>
+                Rename vars
+                <select id="name-style" aria-label="Naming style">
+                    <option value="long">var1, func1, arg1</option>
+                    <option value="short">v1, f1, a1</option>
+                </select>
+            </label>
+            <label>
+                <input type="checkbox" id="blank-lines" checked>
+                Logical blank lines
+            </label>
+            <label>
+                <input type="checkbox" id="fold-string-char" checked>
+                Decode string.char
+            </label>
+            <label>
+                <input type="checkbox" id="decode-escapes" checked>
+                Decode escape sequences
+            </label>
+            <label>
+                <input type="checkbox" id="hex-to-decimal" checked>
+                Hex numbers to decimal
+            </label>
+        </div>
+
+        <div class="panes">
+            <section class="pane">
+                <div class="pane-bar">
+                    <h2>Input</h2>
+                    <button class="button" id="example-button">Example</button>
+                    <label class="button" for="file-input">Open file</label>
+                    <input type="file" id="file-input" accept=".lua,.luau,.txt,text/plain">
+                    <button class="button" id="clear-button">Clear</button>
+                </div>
+                <div class="editor">
+                    <pre id="input-highlight" aria-hidden="true"></pre>
+                    <textarea id="input" spellcheck="false" placeholder="Paste Lua code here"></textarea>
+                </div>
+                <div class="stats" id="input-stats"></div>
+            </section>
+
+            <section class="pane">
+                <div class="pane-bar">
+                    <h2>Output</h2>
+                    <button class="button" id="swap-button">Use as input</button>
+                    <button class="button" id="download-button">Download</button>
+                    <button class="button primary" id="copy-button">Copy</button>
+                </div>
+                <div class="editor">
+                    <pre id="output-highlight" aria-hidden="true"></pre>
+                    <textarea id="output" spellcheck="false" readonly></textarea>
+                </div>
+                <div class="stats" id="output-stats"></div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/lexer.js"></script>
+    <script src="js/syntax.js"></script>
+    <script src="js/literals.js"></script>
+    <script src="js/rename.js"></script>
+    <script src="js/format.js"></script>
+    <script src="js/highlight.js"></script>
+    <script src="js/pipeline.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
